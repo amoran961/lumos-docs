@@ -1,97 +1,61 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Lumos CRM API"
+description: "Documentacion publica para integrar aplicaciones externas con Lumos CRM"
 ---
 
-## Setting up
+## Integra con velocidad y claridad
 
-Get your documentation site up and running in minutes.
+Esta documentacion esta pensada para clientes y equipos externos que necesitan conectar sus sistemas con Lumos CRM de forma segura y predecible.
 
 <Card
-  title="Start here"
+  title="Empieza en minutos"
   icon="rocket"
   href="/quickstart"
   horizontal
 >
-  Follow our three step quickstart guide.
+  Configura credenciales, realiza tu primera llamada y valida tu integracion end-to-end.
 </Card>
 
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
+## Lo esencial para equipos externos
 
 <Columns cols={2}>
   <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
+    title="Referencia API"
     icon="terminal"
     href="/api-reference/introduction"
   >
-    Auto-generate API documentation from OpenAPI specifications.
+    Revisa autenticacion, convenciones y contrato OpenAPI para consumir la API publica.
+  </Card>
+  <Card
+    title="Endpoints base"
+    icon="map"
+    href="/api-reference/endpoint/get"
+  >
+    Explora operaciones de lectura, escritura y eliminacion para tus flujos comerciales.
+  </Card>
+  <Card
+    title="Webhooks"
+    icon="bell"
+    href="/api-reference/endpoint/webhook"
+  >
+    Recibe eventos en tiempo real para sincronizar cambios fuera de Lumos.
+  </Card>
+  <Card
+    title="Guia de inicio"
+    icon="book-open-cover"
+    href="/quickstart"
+  >
+    Sigue una ruta corta para pasar de credenciales a integracion productiva.
   </Card>
 </Columns>
 
-## Create beautiful pages
+## Flujo recomendado
 
-Everything you need to create world-class documentation.
+1. Define tu caso de uso y los objetos que necesitas consultar o actualizar.
+2. Implementa autenticacion bearer y valida errores de autorizacion.
+3. Consume endpoints REST para operaciones principales.
+4. Activa webhooks para automatizaciones y procesos asincronos.
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+<Note>
+  Si migras una integracion existente, comienza por quickstart y luego valida endpoint por endpoint en la referencia.
+</Note>

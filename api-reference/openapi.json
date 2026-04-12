@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "Lumos CRM Public API",
+    "description": "API publica para integraciones externas con Lumos CRM",
     "license": {
       "name": "MIT"
     },
@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.tu-entorno-lumos.com"
     }
   ],
   "security": [
@@ -19,14 +19,14 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/contacts": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "Lista contactos disponibles para el token autenticado",
         "parameters": [
           {
             "name": "limit",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "Cantidad maxima de resultados",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -35,20 +35,20 @@
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Lista de contactos",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Plant"
+                    "$ref": "#/components/schemas/Contact"
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "Unexpected error",
+            "description": "Error de validacion o request invalido",
             "content": {
               "application/json": {
                 "schema": {
@@ -60,31 +60,31 @@
         }
       },
       "post": {
-        "description": "Creates a new plant in the store",
+        "description": "Crea un nuevo contacto",
         "requestBody": {
-          "description": "Plant to add to the store",
+          "description": "Datos del contacto a registrar",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/NewContact"
               }
             }
           },
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "plant response",
+          "201": {
+            "description": "Contacto creado",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "$ref": "#/components/schemas/Contact"
                 }
               }
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Error de validacion o request invalido",
             "content": {
               "application/json": {
                 "schema": {
@@ -96,28 +96,27 @@
         }
       }
     },
-    "/plants/{id}": {
+    "/contacts/{id}": {
       "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+        "description": "Elimina un contacto por id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of plant to delete",
+            "description": "Identificador unico del contacto",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "204": {
-            "description": "Plant deleted",
+            "description": "Contacto eliminado",
             "content": {}
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Error de validacion o request invalido",
             "content": {
               "application/json": {
                 "schema": {
@@ -131,22 +130,22 @@
     }
   },
   "webhooks": {
-    "/plant/webhook": {
+    "/contacts/webhook": {
       "post": {
-        "description": "Information about a new plant added to the store",
+        "description": "Evento emitido cuando cambia un contacto",
         "requestBody": {
-          "description": "Plant added to the store",
+          "description": "Carga util del evento",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/ContactWebhookEvent"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
+            "description": "Retorna 200 para confirmar recepcion"
           }
         }
       }
@@ -154,52 +153,89 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
+      "Contact": {
         "required": [
-          "name"
+          "id",
+          "fullName",
+          "email"
         ],
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
+          "id": {
+            "description": "Identificador unico del contacto",
             "type": "string"
           },
-          "tag": {
-            "description": "Tag to specify the type",
+          "fullName": {
+            "description": "Nombre completo",
+            "type": "string"
+          },
+          "email": {
+            "description": "Correo principal",
+            "type": "string",
+            "format": "email"
+          },
+          "company": {
+            "description": "Empresa asociada",
+            "type": "string"
+          },
+          "status": {
+            "description": "Estado comercial del contacto",
             "type": "string"
           }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
+      "NewContact": {
+        "required": [
+          "fullName",
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "description": "Nombre completo",
+            "type": "string"
           },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
+          "email": {
+            "description": "Correo principal",
+            "type": "string",
+            "format": "email"
+          },
+          "company": {
+            "description": "Empresa asociada",
+            "type": "string"
           }
-        ]
+        }
+      },
+      "ContactWebhookEvent": {
+        "required": [
+          "eventType",
+          "occurredAt",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "eventType": {
+            "type": "string",
+            "example": "contact.updated"
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Contact"
+          }
+        }
       },
       "Error": {
         "required": [
-          "error",
+          "code",
           "message"
         ],
         "type": "object",
         "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
+          "code": {
+            "type": "string"
           },
           "message": {
             "type": "string"
@@ -210,7 +246,8 @@
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
-        "scheme": "bearer"
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
