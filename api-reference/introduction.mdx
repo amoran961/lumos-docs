@@ -17,16 +17,50 @@ La API publica de Lumos CRM permite integrar sistemas externos para consultar, c
   Consulta el contrato base para autenticacion, endpoints y payloads.
 </Card>
 
-## Autenticacion
+## Acceso a endpoints de integracion
 
-Todos los endpoints requieren token bearer en el header Authorization.
+Para consumir endpoints bajo `/integrations/v1` debes enviar:
+
+1. `x-api-key`: API key de integraciones del tenant.
+2. `tenantId`: en query/body segun el endpoint. Opcionalmente puedes usar `x-tenant-id`.
+
+## Como obtener la API key (solo perfil admin)
+
+1. Autenticate con un usuario admin del tenant.
+2. Consulta estado de clave: `GET /integrations/api-key`.
+3. Genera o rota clave: `POST /integrations/api-key/generate`.
+
+Estos endpoints administrativos usan `Authorization: Bearer <jwt>`.
+
+## Ejemplo rapido
+
+```bash
+curl --request GET \
+  --url "https://api.tu-entorno-lumos.com/integrations/v1/accounts?tenantId=<tu_tenant_id>" \
+  --header "x-api-key: <tu_api_key_de_integraciones>"
+```
+
+```bash
+curl --request POST \
+  --url "https://api.tu-entorno-lumos.com/integrations/api-key/generate" \
+  --header "Authorization: Bearer <jwt_admin>"
+```
+
+## Esquemas de seguridad
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
+"securitySchemes": {
+  "apiKeyAuth": {
+    "type": "apiKey",
+    "in": "header",
+    "name": "x-api-key"
+  },
+  "bearerAuth": {
+    "type": "http",
+    "scheme": "bearer",
+    "bearerFormat": "JWT"
   }
-]
+}
 ```
 
 <Tip>

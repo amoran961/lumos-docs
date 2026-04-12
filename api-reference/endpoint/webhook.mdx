@@ -1,4 +1,8 @@
 ---
-title: 'Evento de contacto'
-openapi: 'WEBHOOK /contacts/webhook'
+title: 'Webhook de correo (Nylas)'
+openapi: 'POST /integrations/nylas/webhook'
 ---
+
+<Note>
+	Valida firma `x-nylas-signature` cuando tengas `NYLAS_WEBHOOK_SECRET` configurado.
+</Note>

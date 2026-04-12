@@ -9,24 +9,25 @@ Esta guia resume el camino mas corto para conectar un sistema externo con Lumos 
 
 ### Paso 1: configura acceso
 
-1. Solicita credenciales para tu integracion.
-2. Guarda el token bearer en un gestor seguro de secretos.
-3. Define el entorno que vas a consumir (sandbox o produccion).
+1. Ingresa con un usuario de rol admin del tenant.
+2. Genera o recupera la API key del tenant desde `POST /integrations/api-key/generate` o `GET /integrations/api-key`.
+3. Guarda la API key en tu gestor seguro de secretos.
+4. Identifica el `tenantId` que usaras en todas las llamadas de integracion.
 
 <Note>
-  No expongas tokens en codigo fuente, repositorios ni logs de aplicacion.
+  Solo el perfil admin puede gestionar la API key de integraciones.
 </Note>
 
 ### Paso 2: ejecuta la primera llamada
 
 ```bash
 curl --request GET \
-  --url "https://api.tu-entorno-lumos.com/contacts?limit=10" \
-  --header "Authorization: Bearer <tu_token>" \
+  --url "https://api.tu-entorno-lumos.com/integrations/v1/accounts?tenantId=<tu_tenant_id>" \
+  --header "x-api-key: <tu_api_key_de_integraciones>" \
   --header "Content-Type: application/json"
 ```
 
-Si recibes codigo 401 o 403, revisa permisos y expiracion del token antes de continuar.
+Si recibes codigo 401, revisa que la API key corresponda al mismo tenantId.
 
 ### Paso 3: activa eventos webhook
 
@@ -34,19 +35,19 @@ Configura un endpoint HTTPS en tu sistema para recibir notificaciones de cambios
 
 ```json
 {
-  "eventType": "contact.updated",
-  "occurredAt": "2026-04-12T16:30:00Z",
-  "data": {
-    "id": "ct_1024"
-  }
+  "type": "message.created",
+  "grant_id": "<grant_id>",
+  "id": "evt_123456"
 }
 ```
+
+Lumos procesa eventos del proveedor de correo en `POST /integrations/nylas/webhook`.
 
 ## Siguiente paso
 
 <CardGroup cols={2}>
   <Card title="Revisa autenticacion" icon="shield" href="/api-reference/introduction">
-    Valida headers, seguridad y convenciones de la API publica.
+    Valida el flujo admin para API key y el uso obligatorio de tenantId.
   </Card>
   <Card title="Explora endpoints" icon="terminal" href="/api-reference/endpoint/get">
     Implementa operaciones de lectura y escritura para tus casos de negocio.
