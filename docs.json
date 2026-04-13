@@ -46,14 +46,10 @@
             ]
           },
           {
-            "group": "Credenciales y OAuth",
+            "group": "Credenciales",
             "pages": [
               "api-reference/endpoint/api-key-get",
-              "api-reference/endpoint/api-key-generate",
-              "api-reference/endpoint/google-status",
-              "api-reference/endpoint/google-connect",
-              "api-reference/endpoint/google-disconnect",
-              "api-reference/endpoint/google-callback"
+              "api-reference/endpoint/api-key-generate"
             ]
           }
         ]
