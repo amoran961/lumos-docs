@@ -1,0 +1,22 @@
+---
+title: 'Resolver grantId'
+description: 'Obtiene tenant y usuario asociados a un grantId'
+---
+
+## Metodo y ruta
+
+`GET /integrations/v1/grants/resolve`
+
+## Autenticacion
+
+- Header `x-api-key`
+- Query `tenantId`
+- Query `grantId`
+
+## Ejemplo
+
+```bash
+curl --request GET \
+  --url "https://api.tu-entorno-lumos.com/integrations/v1/grants/resolve?tenantId=<tu_tenant_id>&grantId=<tu_grant_id>" \
+  --header "x-api-key: <tu_api_key>"
+```

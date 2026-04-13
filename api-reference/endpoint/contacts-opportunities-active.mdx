@@ -1,0 +1,22 @@
+---
+title: 'Oportunidades activas por contactos'
+description: 'Devuelve oportunidades activas para una lista de emails en un tenant'
+---
+
+## Metodo y ruta
+
+`POST /integrations/v1/contacts/opportunities/active`
+
+## Autenticacion
+
+- Header `x-api-key`
+- Campo `tenantId` en body
+
+## Body minimo
+
+```json
+{
+  "tenantId": "<tu_tenant_id>",
+  "emails": ["ventas@cliente.com"]
+}
+```

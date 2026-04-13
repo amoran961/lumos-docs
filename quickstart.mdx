@@ -29,19 +29,13 @@ curl --request GET \
 
 Si recibes codigo 401, revisa que la API key corresponda al mismo tenantId.
 
-### Paso 3: activa eventos webhook
+### Paso 3: habilita endpoints de soporte
 
-Configura un endpoint HTTPS en tu sistema para recibir notificaciones de cambios relevantes y mantener tus datos sincronizados.
+Activa los endpoints de soporte para tus flujos operativos:
 
-```json
-{
-  "type": "message.created",
-  "grant_id": "<grant_id>",
-  "id": "evt_123456"
-}
-```
-
-Lumos procesa eventos del proveedor de correo en `POST /integrations/nylas/webhook`.
+1. Consulta estado de integracion Google.
+2. Obtiene o rota API key cuando cambie tu politica de seguridad.
+3. Usa resumen de oportunidades e hilos para contexto comercial.
 
 ## Siguiente paso
 
@@ -49,7 +43,7 @@ Lumos procesa eventos del proveedor de correo en `POST /integrations/nylas/webho
   <Card title="Revisa autenticacion" icon="shield" href="/api-reference/introduction">
     Valida el flujo admin para API key y el uso obligatorio de tenantId.
   </Card>
-  <Card title="Explora endpoints" icon="terminal" href="/api-reference/endpoint/get">
+  <Card title="Explora endpoints" icon="terminal" href="/api-reference/endpoint/accounts-list">
     Implementa operaciones de lectura y escritura para tus casos de negocio.
   </Card>
 </CardGroup>

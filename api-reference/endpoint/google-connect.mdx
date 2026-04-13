@@ -1,0 +1,17 @@
+---
+title: 'Iniciar OAuth Google'
+description: 'Inicia el flujo de autorizacion con Google via Nylas'
+---
+
+## Metodo y ruta
+
+`GET /integrations/google/connect`
+
+## Autenticacion
+
+- Header `Authorization: Bearer <jwt_usuario>`
+
+## Query opcional
+
+- `mode`: `redirect` o `json`
+- `popup`: `0` o `1`

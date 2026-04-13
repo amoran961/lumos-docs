@@ -1,0 +1,16 @@
+---
+title: 'Generar API key del tenant'
+description: 'Genera o rota la API key de integraciones'
+---
+
+## Metodo y ruta
+
+`POST /integrations/api-key/generate`
+
+## Autenticacion
+
+- Header `Authorization: Bearer <jwt_admin>`
+
+## Notas
+
+- Solo usuarios con rol admin pueden generar o rotar la clave.

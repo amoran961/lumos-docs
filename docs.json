@@ -32,12 +32,28 @@
         "tab": "API",
         "groups": [
           {
-            "group": "Endpoints",
+            "group": "Integracion externa v1",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/endpoint/accounts-list",
+              "api-reference/endpoint/accounts-create",
+              "api-reference/endpoint/contacts-create",
+              "api-reference/endpoint/opportunities-create",
+              "api-reference/endpoint/activities-create",
+              "api-reference/endpoint/contacts-opportunities-active",
+              "api-reference/endpoint/opportunity-threads-list",
+              "api-reference/endpoint/opportunities-summary",
+              "api-reference/endpoint/grants-resolve"
+            ]
+          },
+          {
+            "group": "Credenciales y OAuth",
+            "pages": [
+              "api-reference/endpoint/api-key-get",
+              "api-reference/endpoint/api-key-generate",
+              "api-reference/endpoint/google-status",
+              "api-reference/endpoint/google-connect",
+              "api-reference/endpoint/google-disconnect",
+              "api-reference/endpoint/google-callback"
             ]
           }
         ]
@@ -62,7 +78,7 @@
     "primary": {
       "type": "button",
       "label": "Ver endpoints",
-      "href": "/api-reference/endpoint/get"
+      "href": "/api-reference/endpoint/accounts-list"
     }
   },
   "contextual": {
