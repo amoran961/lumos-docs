@@ -52,7 +52,8 @@
               "api-reference/endpoint/contacts-opportunities-active",
               "api-reference/endpoint/opportunity-threads-list",
               "api-reference/endpoint/opportunities-summary",
-              "api-reference/endpoint/grants-resolve"
+              "api-reference/endpoint/grants-resolve",
+              "api-reference/endpoint/pipeline-stages-list"
             ]
           },
           {

@@ -1,0 +1,342 @@
+{
+  "info": {
+    "_postman_id": "5f2a4f5b-3d16-4ed0-9278-6fd6a4f8bb1b",
+    "name": "Lumos External Integrations API v1",
+    "description": "Postman collection for Lumos external integration endpoints under /integrations/v1.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Accounts",
+      "item": [
+        {
+          "name": "List accounts",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/accounts?tenantId={{tenantId}}&page={{page}}&limit={{limit}}"
+          }
+        },
+        {
+          "name": "Create account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenantId\": \"{{tenantId}}\",\n  \"name\": \"Cuenta Demo\",\n  \"status\": \"prospect\",\n  \"country\": \"MX\",\n  \"industry\": \"Tecnologia\",\n  \"phone\": \"+525555555555\",\n  \"email\": \"contacto@cuentademo.com\"\n}"
+            },
+            "url": "{{baseUrl}}/integrations/v1/accounts"
+          }
+        },
+        {
+          "name": "Get account by id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/accounts/{{accountId}}?tenantId={{tenantId}}"
+          }
+        },
+        {
+          "name": "Update account by id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Cuenta Demo Actualizada\",\n  \"status\": \"active\",\n  \"industry\": \"Servicios\",\n  \"website\": \"https://cuentademo.com\"\n}"
+            },
+            "url": "{{baseUrl}}/integrations/v1/accounts/{{accountId}}?tenantId={{tenantId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contacts",
+      "item": [
+        {
+          "name": "List contacts",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/contacts?tenantId={{tenantId}}&page={{page}}&limit={{limit}}"
+          }
+        },
+        {
+          "name": "Create contact",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenantId\": \"{{tenantId}}\",\n  \"accountId\": \"{{accountId}}\",\n  \"firstName\": \"Ana\",\n  \"lastName\": \"Lopez\",\n  \"email\": \"ana.lopez@cuentademo.com\",\n  \"status\": \"active\"\n}"
+            },
+            "url": "{{baseUrl}}/integrations/v1/contacts"
+          }
+        },
+        {
+          "name": "Get contact by id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/contacts/{{contactId}}?tenantId={{tenantId}}"
+          }
+        },
+        {
+          "name": "Update contact by id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"position\": \"Account Executive\",\n  \"phone\": \"+525511112222\",\n  \"status\": \"active\"\n}"
+            },
+            "url": "{{baseUrl}}/integrations/v1/contacts/{{contactId}}?tenantId={{tenantId}}"
+          }
+        },
+        {
+          "name": "Active opportunities by contact emails",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenantId\": \"{{tenantId}}\",\n  \"emails\": [\n    \"ana.lopez@cuentademo.com\",\n    \"ventas@cuentademo.com\"\n  ]\n}"
+            },
+            "url": "{{baseUrl}}/integrations/v1/contacts/opportunities/active"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Opportunities",
+      "item": [
+        {
+          "name": "List opportunities",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/opportunities?tenantId={{tenantId}}&page={{page}}&limit={{limit}}&pipelineStageId={{pipelineStageId}}"
+          }
+        },
+        {
+          "name": "Create opportunity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenantId\": \"{{tenantId}}\",\n  \"name\": \"Renovacion Enterprise 2026\",\n  \"accountId\": \"{{accountId}}\",\n  \"contactId\": \"{{contactId}}\",\n  \"amount\": 25000,\n  \"probability\": 60,\n  \"stage\": \"proposal\"\n}"
+            },
+            "url": "{{baseUrl}}/integrations/v1/opportunities"
+          }
+        },
+        {
+          "name": "Get opportunity by id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/opportunities/{{opportunityId}}?tenantId={{tenantId}}"
+          }
+        },
+        {
+          "name": "Update opportunity by id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stage\": \"negotiation\",\n  \"probability\": 75,\n  \"nextStep\": \"Enviar propuesta final\"\n}"
+            },
+            "url": "{{baseUrl}}/integrations/v1/opportunities/{{opportunityId}}?tenantId={{tenantId}}"
+          }
+        },
+        {
+          "name": "Opportunities summary",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/opportunities/summary?tenantId={{tenantId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Activities",
+      "item": [
+        {
+          "name": "List activities",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/activities?tenantId={{tenantId}}&opportunityId={{opportunityId}}&page={{page}}&limit={{limit}}"
+          }
+        },
+        {
+          "name": "Create activity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenantId\": \"{{tenantId}}\",\n  \"relatedToType\": \"opportunity\",\n  \"relatedToId\": \"{{opportunityId}}\",\n  \"type\": \"call\",\n  \"subject\": \"Llamada de seguimiento\",\n  \"description\": \"Cliente solicita ajuste comercial\"\n}"
+            },
+            "url": "{{baseUrl}}/integrations/v1/activities"
+          }
+        },
+        {
+          "name": "Get activity by id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/activities/{{activityId}}?tenantId={{tenantId}}&opportunityId={{opportunityId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Utilities",
+      "item": [
+        {
+          "name": "List pipeline stages",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/pipeline-stages?tenantId={{tenantId}}&pipelineId={{pipelineId}}"
+          }
+        },
+        {
+          "name": "List opportunity threads",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/opportunity-threads?tenantId={{tenantId}}&limit={{limit}}&offset={{offset}}"
+          }
+        },
+        {
+          "name": "Resolve grantId",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/integrations/v1/grants/resolve?tenantId={{tenantId}}&grantId={{grantId}}"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://lumos-am-prd.azure-api.net/api/external",
+      "type": "string"
+    },
+    {
+      "key": "apiKey",
+      "value": "REEMPLAZA_CON_TU_API_KEY",
+      "type": "string"
+    },
+    {
+      "key": "tenantId",
+      "value": "REEMPLAZA_CON_TENANT_ID",
+      "type": "string"
+    },
+    {
+      "key": "accountId",
+      "value": "REEMPLAZA_CON_ACCOUNT_ID",
+      "type": "string"
+    },
+    {
+      "key": "contactId",
+      "value": "REEMPLAZA_CON_CONTACT_ID",
+      "type": "string"
+    },
+    {
+      "key": "opportunityId",
+      "value": "REEMPLAZA_CON_OPPORTUNITY_ID",
+      "type": "string"
+    },
+    {
+      "key": "pipelineId",
+      "value": "REEMPLAZA_CON_PIPELINE_ID",
+      "type": "string"
+    },
+    {
+      "key": "pipelineStageId",
+      "value": "REEMPLAZA_CON_PIPELINE_STAGE_ID",
+      "type": "string"
+    },
+    {
+      "key": "activityId",
+      "value": "REEMPLAZA_CON_ACTIVITY_ID",
+      "type": "string"
+    },
+    {
+      "key": "grantId",
+      "value": "REEMPLAZA_CON_GRANT_ID",
+      "type": "string"
+    },
+    {
+      "key": "page",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "limit",
+      "value": "20",
+      "type": "string"
+    },
+    {
+      "key": "offset",
+      "value": "0",
+      "type": "string"
+    }
+  ]
+}
