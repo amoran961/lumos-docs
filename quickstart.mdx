@@ -10,12 +10,12 @@ Esta guia resume el camino mas corto para conectar un sistema externo con Lumos 
 ### Paso 1: configura acceso
 
 1. Ingresa con un usuario de rol admin del tenant.
-2. Genera o recupera la API key del tenant desde `POST /integrations/api-key/generate` o `GET /integrations/api-key`.
+2. Genera, recupera o rota la API key del tenant desde la consola de administracion.
 3. Guarda la API key en tu gestor seguro de secretos.
 4. Identifica el `tenantId` que usaras en todas las llamadas de integracion.
 
 <Note>
-  Solo el perfil admin puede gestionar la API key de integraciones.
+  Solo el perfil admin puede gestionar la API key de integraciones desde la consola de administracion.
 </Note>
 
 ### Paso 2: ejecuta la primera llamada
@@ -33,7 +33,7 @@ Si recibes codigo 401, revisa que la API key corresponda al mismo tenantId.
 
 Activa los endpoints de soporte para tus flujos operativos:
 
-1. Obtiene o rota API key cuando cambie tu politica de seguridad.
+1. Cuando cambie tu politica de seguridad, rota la API key desde la consola de administracion.
 2. Usa resumen de oportunidades e hilos para contexto comercial.
 3. Resuelve grantId cuando necesites trazabilidad entre sistemas.
 

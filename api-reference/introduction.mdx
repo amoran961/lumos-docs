@@ -24,13 +24,13 @@ Para consumir endpoints bajo `/integrations/v1` debes enviar:
 1. `x-api-key`: API key de integraciones del tenant.
 2. `tenantId`: en query/body segun el endpoint. Opcionalmente puedes usar `x-tenant-id`.
 
-## Como obtener la API key (solo perfil admin)
+## Como gestionar la API key (solo perfil admin)
 
-1. Autenticate con un usuario admin del tenant.
-2. Consulta estado de clave: `GET /integrations/api-key`.
-3. Genera o rota clave: `POST /integrations/api-key/generate`.
+1. Ingresa a la consola de administracion de Lumos con un usuario admin del tenant.
+2. Consulta el estado de la API key del tenant desde el modulo de integraciones.
+3. Genera o rota la API key desde la misma consola y guardala en tu gestor de secretos.
 
-Estos endpoints administrativos usan `Authorization: Bearer <jwt>`.
+Los endpoints `/integrations/api-key` y `/integrations/api-key/generate` son administrativos y su uso operativo se gestiona via consola de administracion.
 
 ## Ejemplo rapido
 
@@ -38,12 +38,6 @@ Estos endpoints administrativos usan `Authorization: Bearer <jwt>`.
 curl --request GET \
   --url "https://api.tu-entorno-lumos.com/integrations/v1/accounts?tenantId=<tu_tenant_id>" \
   --header "x-api-key: <tu_api_key_de_integraciones>"
-```
-
-```bash
-curl --request POST \
-  --url "https://api.tu-entorno-lumos.com/integrations/api-key/generate" \
-  --header "Authorization: Bearer <jwt_admin>"
 ```
 
 ## Esquemas de seguridad
