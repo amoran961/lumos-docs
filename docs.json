@@ -46,6 +46,8 @@
               "api-reference/endpoint/opportunities-create",
               "api-reference/endpoint/opportunities-get",
               "api-reference/endpoint/opportunities-update",
+              "api-reference/endpoint/activities-list",
+              "api-reference/endpoint/activities-get",
               "api-reference/endpoint/activities-create",
               "api-reference/endpoint/contacts-opportunities-active",
               "api-reference/endpoint/opportunity-threads-list",
