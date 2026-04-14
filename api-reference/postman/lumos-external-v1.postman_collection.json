@@ -156,7 +156,7 @@
           "name": "List opportunities",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/integrations/v1/opportunities?tenantId={{tenantId}}&page={{page}}&limit={{limit}}&pipelineStageId={{pipelineStageId}}"
+            "url": "{{baseUrl}}/integrations/v1/opportunities?tenantId={{tenantId}}&page={{page}}&limit={{limit}}&pipelineStageId={{pipelineStageIds}}"
           }
         },
         {
@@ -266,7 +266,7 @@
           "name": "Resolve grantId",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/integrations/v1/grants/resolve?tenantId={{tenantId}}&grantId={{grantId}}"
+            "url": "{{baseUrl}}/integrations/v1/grants/resolve?grantId={{grantId}}"
           }
         }
       ]
@@ -309,8 +309,8 @@
       "type": "string"
     },
     {
-      "key": "pipelineStageId",
-      "value": "REEMPLAZA_CON_PIPELINE_STAGE_ID",
+      "key": "pipelineStageIds",
+      "value": "REEMPLAZA_CON_PIPELINE_STAGE_ID_1,REEMPLAZA_CON_PIPELINE_STAGE_ID_2",
       "type": "string"
     },
     {
