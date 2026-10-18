@@ -1,8 +1,6 @@
 ---
-title: 'Actualizar cuenta'
-openapi: 'PUT /integrations/v1/accounts/{id}'
+title: "Actualizar cuenta (parcial)"
+openapi: "PATCH /accounts/{id}"
 ---
 
-<Note>
-  Requiere header `x-api-key`, `tenantId` en query y `id` en la ruta.
-</Note>
+Requiere el permiso `accounts:write`.

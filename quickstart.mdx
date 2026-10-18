@@ -1,49 +1,32 @@
 ---
-title: "Quickstart"
-description: "Integra Lumos CRM en tres pasos"
+title: "Primeros pasos"
+description: "Realiza tu primera consulta y crea una cuenta."
 ---
 
-## Integra en tres pasos
+## Configura el acceso
 
-Esta guia resume el camino mas corto para conectar un sistema externo con Lumos CRM.
+En **Configuración → Integraciones**, solicita a un administrador que cree una integración con los permisos necesarios y genere una API key. Guarda la key cuando se muestre: solo puedes verla una vez.
 
-### Paso 1: configura acceso
+Define `LUMOS_API_BASE_URL` con la URL base confirmada para tu entorno, incluyendo `/integrations/v1`. Define `LUMOS_API_KEY` con la credencial guardada en tu gestor de secretos.
 
-1. Ingresa con un usuario de rol admin del tenant.
-2. Genera, recupera o rota la API key del tenant desde la consola de administracion.
-3. Guarda la API key en tu gestor seguro de secretos.
-4. Identifica el `tenantId` que usaras en todas las llamadas de integracion.
+## Consulta cuentas
 
-<Note>
-  Solo el perfil admin puede gestionar la API key de integraciones desde la consola de administracion.
-</Note>
-
-### Paso 2: ejecuta la primera llamada
+Necesitas el permiso `accounts:read`. La key identifica a tu empresa; no envíes `tenantId` ni `x-tenant-id`.
 
 ```bash
-curl --request GET \
-  --url "https://lumos-am-prd.azure-api.net/api/external/integrations/v1/accounts?tenantId=<tu_tenant_id>" \
-  --header "x-api-key: <tu_api_key_de_integraciones>" \
-  --header "Content-Type: application/json"
+curl --get "$LUMOS_API_BASE_URL/accounts"   --data-urlencode 'limit=50'   --header "x-api-key: $LUMOS_API_KEY"
 ```
 
-Si recibes codigo 401, revisa que la API key corresponda al mismo tenantId.
+La respuesta contiene `data` y `nextCursor`. Si hay otro cursor, úsalo para obtener la página siguiente.
 
-### Paso 3: habilita endpoints de soporte
+## Crea una cuenta
 
-Activa los endpoints de soporte para tus flujos operativos:
+Necesitas `accounts:write`. Usa una clave de idempotencia distinta para cada operación y conserva la misma al reintentar.
 
-1. Cuando cambie tu politica de seguridad, rota la API key desde la consola de administracion.
-2. Usa resumen de oportunidades e hilos para contexto comercial.
-3. Resuelve grantId cuando necesites trazabilidad entre sistemas.
+```bash
+curl --request POST "$LUMOS_API_BASE_URL/accounts"   --header "x-api-key: $LUMOS_API_KEY"   --header 'Content-Type: application/json'   --header 'Idempotency-Key: 542296f4-cf53-4e8c-85c4-8a749c5f0a11'   --data '{"name":"ACME Perú","country":"PE","status":"active"}'
+```
 
-## Siguiente paso
+Tu empresa puede exigir campos adicionales. Consulta el [catálogo de campos personalizados](/api-reference/endpoint/custom-fields-list) y las reglas configuradas antes de crear registros.
 
-<CardGroup cols={2}>
-  <Card title="Revisa autenticacion" icon="shield" href="/api-reference/introduction">
-    Valida el flujo admin para API key y el uso obligatorio de tenantId.
-  </Card>
-  <Card title="Explora endpoints" icon="terminal" href="/api-reference/endpoint/accounts-list">
-    Implementa operaciones de lectura y escritura para tus casos de negocio.
-  </Card>
-</CardGroup>
+Continúa con [autenticación](/api-reference/authentication), [sincronización](/api-reference/synchronization) y [errores](/api-reference/errors).

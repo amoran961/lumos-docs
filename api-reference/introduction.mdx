@@ -1,62 +1,31 @@
 ---
-title: 'Introduccion'
-description: 'Guia base de la API publica de Lumos CRM'
+title: "Introducción"
+description: "Alcance y contrato de la API pública v1."
 ---
 
-## Alcance
+## URL base
 
-La API publica de Lumos CRM permite integrar sistemas externos para consultar, crear y sincronizar informacion comercial.
+El contrato define `https://platform.lumosai.biz/integrations/v1` como servidor predeterminado. Confirma el host y cualquier prefijo de gateway con tu administrador para el entorno que vas a utilizar.
 
-## Especificacion OpenAPI
+## Operaciones disponibles
 
-<Card
-  title="Lumos CRM OpenAPI"
-  icon="terminal"
-  href="/api-reference/openapi.json"
->
-  Consulta el contrato base para autenticacion, endpoints y payloads.
-</Card>
+| Recurso | Operaciones |
+| --- | --- |
+| Cuentas, contactos y oportunidades | Listar, obtener, crear y actualizar parcialmente |
+| Actividades | Listar, obtener y registrar |
+| Tareas | Listar, obtener, crear y actualizar; completar mediante `status=completed` |
+| Pipelines | Consultar pipelines y etapas |
+| Usuarios | Consultar usuarios para asignaciones |
+| Campos personalizados | Consultar claves, tipos y opciones por entidad |
 
-## Acceso a endpoints de integracion
+Las actualizaciones usan `PATCH`. La API pública v1 no expone eliminación de registros.
 
-Para consumir endpoints bajo `/integrations/v1` debes enviar:
+Las escrituras respetan los campos obligatorios y las reglas de negocio del CRM. Las referencias a cuentas, contactos, usuarios y etapas deben pertenecer a tu empresa.
 
-1. `x-api-key`: API key de integraciones del tenant.
-2. `tenantId`: en query/body segun el endpoint. Opcionalmente puedes usar `x-tenant-id`.
+## Contrato OpenAPI
 
-## Como gestionar la API key (solo perfil admin)
+Descarga el [contrato OpenAPI](/api-reference/openapi.json) para consultar esquemas y generar clientes. La referencia de endpoints utiliza ese mismo archivo.
 
-1. Ingresa a la consola de administracion de Lumos con un usuario admin del tenant.
-2. Consulta el estado de la API key del tenant desde el modulo de integraciones.
-3. Genera o rota la API key desde la misma consola y guardala en tu gestor de secretos.
+## Compatibilidad
 
-Los endpoints `/integrations/api-key` y `/integrations/api-key/generate` son administrativos y su uso operativo se gestiona via consola de administracion.
-
-## Ejemplo rapido
-
-```bash
-curl --request GET \
-  --url "https://lumos-am-prd.azure-api.net/api/external/integrations/v1/accounts?tenantId=<tu_tenant_id>" \
-  --header "x-api-key: <tu_api_key_de_integraciones>"
-```
-
-## Esquemas de seguridad
-
-```json
-"securitySchemes": {
-  "apiKeyAuth": {
-    "type": "apiKey",
-    "in": "header",
-    "name": "x-api-key"
-  },
-  "bearerAuth": {
-    "type": "http",
-    "scheme": "bearer",
-    "bearerFormat": "JWT"
-  }
-}
-```
-
-<Tip>
-  Mantén rotación periódica de API keys por tenant y evita exponerlas en logs o repositorios.
-</Tip>
+Esta documentación describe el módulo nuevo de API pública v1. La integración anterior también usa `/integrations/v1`, pero tiene autenticación y operaciones diferentes. Confirma que v1 está habilitada antes de migrar. Las operaciones internas de correo y la administración de credenciales no forman parte de esta referencia pública.

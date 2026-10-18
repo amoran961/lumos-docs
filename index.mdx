@@ -1,61 +1,17 @@
 ---
-title: "Lumos CRM API"
-description: "Documentacion publica para integrar aplicaciones externas con Lumos CRM"
+title: "API pública de Lumos CRM"
+description: "Conecta tu ERP, sitio web o automatizaciones con Lumos CRM."
 ---
 
-## Integra con velocidad y claridad
+Integra tus sistemas con cuentas, contactos, oportunidades, actividades y tareas de tu empresa. Consulta pipelines, usuarios y campos personalizados para construir tus flujos.
 
-Esta documentacion esta pensada para clientes y equipos externos que necesitan conectar sus sistemas con Lumos CRM de forma segura y predecible.
-
-<Card
-  title="Empieza en minutos"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Configura credenciales, realiza tu primera llamada y valida tu integracion end-to-end.
-</Card>
-
-## Lo esencial para equipos externos
-
-<Columns cols={2}>
-  <Card
-    title="Referencia API"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Revisa autenticacion, convenciones y contrato OpenAPI para consumir la API publica.
-  </Card>
-  <Card
-    title="Endpoints base"
-    icon="map"
-    href="/api-reference/endpoint/accounts-list"
-  >
-    Explora operaciones de lectura, escritura y eliminacion para tus flujos comerciales.
-  </Card>
-  <Card
-    title="Credenciales admin"
-    icon="key"
-    href="/api-reference/endpoint/api-key-get"
-  >
-    Gestiona API keys de integracion por tenant desde la consola de administracion.
-  </Card>
-  <Card
-    title="Guia de inicio"
-    icon="book-open-cover"
-    href="/quickstart"
-  >
-    Sigue una ruta corta para pasar de credenciales a integracion productiva.
-  </Card>
-</Columns>
-
-## Flujo recomendado
-
-1. Define tu caso de uso y los objetos que necesitas consultar o actualizar.
-2. Obtiene o rota la API key desde la consola de administracion con perfil admin y usa tenantId en cada request de integracion.
-3. Consume endpoints REST para operaciones principales.
-4. Usa endpoints de soporte para resumen y trazabilidad de integraciones.
+<CardGroup cols={2}>
+  <Card title="Primeros pasos" icon="rocket" href="/quickstart">Configura una integración y realiza tu primera consulta.</Card>
+  <Card title="Referencia de endpoints" icon="terminal" href="/api-reference/endpoint/accounts-list">Consulta parámetros, cuerpos y respuestas.</Card>
+  <Card title="Autenticación y permisos" icon="key" href="/api-reference/authentication">Crea credenciales con los permisos que necesitas.</Card>
+  <Card title="Sincronización" icon="arrows-rotate" href="/api-reference/synchronization">Usa cursores, cambios incrementales e idempotencia.</Card>
+</CardGroup>
 
 <Note>
-  Si migras una integracion existente, comienza por quickstart y luego valida endpoint por endpoint en la referencia.
+Esta documentación corresponde a la API pública v1. Confirma con tu administrador que está habilitada y cuál es la URL base de tu entorno antes de integrar.
 </Note>

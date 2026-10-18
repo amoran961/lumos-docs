@@ -1,55 +1,31 @@
-# Mintlify Starter Kit
+# Documentación de la API pública de Lumos CRM
 
-Use the starter kit to get your docs deployed and ready to customize.
+Sitio Mintlify con guías en español y referencia de las 22 operaciones de la API pública v1.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Fuentes
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+- Contrato fuente: `lumosai-core-ms/docs/public-api-v1.openapi.yaml`.
+- Implementación: `lumosai-core-ms/src/routes/publicApi.ts` y `src/lib/publicApi`.
+- Contrato publicado: `api-reference/openapi.json`, convertido desde el YAML fuente sin modificar rutas ni esquemas.
+- Navegación: `docs.json`. Las páginas de endpoints vinculan operaciones del contrato publicado.
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+Confirma que `PUBLIC_API_V1_ENABLED=true` en el entorno antes de utilizar esta documentación para una integración. El host predeterminado del contrato no demuestra que el entorno esté habilitado o sea accesible.
 
-## AI-assisted writing
+## Desarrollo y validación
 
-Set up your AI coding tool to work with Mintlify:
+Con el CLI de Mintlify instalado, ejecuta desde este directorio:
 
 ```bash
-npx skills add https://mintlify.com/docs
-```
-
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
-
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
 mint dev
+mint broken-links
 ```
 
-View your local preview at `http://localhost:3000`.
+Cuando cambie el contrato del core, actualiza `api-reference/openapi.json`, las páginas de operaciones y las guías afectadas. Comprueba los permisos y ejemplos contra la implementación.
 
-## Publishing changes
+## Material anterior
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+Las páginas de la integración legacy que ya no aparecen en `docs.json` y la colección `api-reference/postman/lumos-external-v1.postman_collection.json` conservan el contrato anterior. No las uses como ejemplos de la nueva API pública v1. Incluyen operaciones de correo y administración que no forman parte de la referencia actual.
 
-## Need help?
+## Publicación
 
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+Estos cambios locales no publican el sitio. Si Mintlify está conectado al repositorio, la publicación depende de su configuración de rama y despliegue.

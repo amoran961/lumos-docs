@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guias",
+        "tab": "Guías",
         "groups": [
           {
             "group": "Inicio",
@@ -21,9 +21,12 @@
             ]
           },
           {
-            "group": "API publica",
+            "group": "API pública",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/introduction",
+              "api-reference/authentication",
+              "api-reference/synchronization",
+              "api-reference/errors"
             ]
           }
         ]
@@ -32,35 +35,65 @@
         "tab": "API",
         "groups": [
           {
-            "group": "Integracion externa v1",
+            "group": "Cuentas",
             "pages": [
               "api-reference/endpoint/accounts-list",
-              "api-reference/endpoint/accounts-get",
               "api-reference/endpoint/accounts-create",
-              "api-reference/endpoint/accounts-update",
-              "api-reference/endpoint/contacts-list",
-              "api-reference/endpoint/contacts-create",
-              "api-reference/endpoint/contacts-get",
-              "api-reference/endpoint/contacts-update",
-              "api-reference/endpoint/opportunities-list",
-              "api-reference/endpoint/opportunities-create",
-              "api-reference/endpoint/opportunities-get",
-              "api-reference/endpoint/opportunities-update",
-              "api-reference/endpoint/activities-list",
-              "api-reference/endpoint/activities-get",
-              "api-reference/endpoint/activities-create",
-              "api-reference/endpoint/contacts-opportunities-active",
-              "api-reference/endpoint/opportunity-threads-list",
-              "api-reference/endpoint/opportunities-summary",
-              "api-reference/endpoint/grants-resolve",
-              "api-reference/endpoint/pipeline-stages-list"
+              "api-reference/endpoint/accounts-get",
+              "api-reference/endpoint/accounts-update"
             ]
           },
           {
-            "group": "Credenciales",
+            "group": "Contactos",
             "pages": [
-              "api-reference/endpoint/api-key-get",
-              "api-reference/endpoint/api-key-generate"
+              "api-reference/endpoint/contacts-list",
+              "api-reference/endpoint/contacts-create",
+              "api-reference/endpoint/contacts-get",
+              "api-reference/endpoint/contacts-update"
+            ]
+          },
+          {
+            "group": "Oportunidades",
+            "pages": [
+              "api-reference/endpoint/opportunities-list",
+              "api-reference/endpoint/opportunities-create",
+              "api-reference/endpoint/opportunities-get",
+              "api-reference/endpoint/opportunities-update"
+            ]
+          },
+          {
+            "group": "Actividades",
+            "pages": [
+              "api-reference/endpoint/activities-list",
+              "api-reference/endpoint/activities-create",
+              "api-reference/endpoint/activities-get"
+            ]
+          },
+          {
+            "group": "Tareas",
+            "pages": [
+              "api-reference/endpoint/tasks-list",
+              "api-reference/endpoint/tasks-create",
+              "api-reference/endpoint/tasks-get",
+              "api-reference/endpoint/tasks-update"
+            ]
+          },
+          {
+            "group": "Campos personalizados",
+            "pages": [
+              "api-reference/endpoint/custom-fields-list"
+            ]
+          },
+          {
+            "group": "Pipelines",
+            "pages": [
+              "api-reference/endpoint/pipelines-list"
+            ]
+          },
+          {
+            "group": "Usuarios",
+            "pages": [
+              "api-reference/endpoint/users-list"
             ]
           }
         ]
@@ -90,13 +123,13 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {

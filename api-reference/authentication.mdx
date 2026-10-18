@@ -1,0 +1,28 @@
+---
+title: "Autenticación y permisos"
+description: "Gestiona credenciales por integración y permisos por recurso."
+---
+
+## Envía la credencial
+
+Cada integración tiene sus propias API keys. La key identifica al tenant y sus permisos; no necesitas enviar `tenantId`.
+
+```http
+x-api-key: lumos_live_...
+```
+
+También puedes usar `Authorization: Bearer lumos_live_...`. Esta credencial es una API key, no un JWT de sesión del CRM. Consúmela desde tu servidor y guárdala en un gestor de secretos.
+
+## Permisos
+
+Las integraciones usan scopes `accounts:read`, `accounts:write`, `contacts:read`, `contacts:write`, `opportunities:read`, `opportunities:write`, `activities:read`, `activities:write`, `tasks:read`, `tasks:write`, `pipelines:read` y `users:read`.
+
+Concede solo los permisos necesarios. Un permiso de escritura no sustituye al de lectura. El catálogo de campos personalizados requiere el permiso de lectura de la entidad solicitada.
+
+## Rota una key
+
+1. Genera una segunda key en la integración. Puedes mantener hasta dos activas.
+2. Actualiza la credencial en tu sistema y verifica una consulta.
+3. Revoca la key anterior.
+
+La key se muestra una sola vez. Si la pierdes, genera otra. Una key inválida o revocada devuelve `401`; un permiso insuficiente devuelve `403`.

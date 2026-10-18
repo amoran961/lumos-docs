@@ -1,6 +1,6 @@
 ---
 title: 'Resolver grantId'
-description: 'Obtiene tenant y usuario asociados a un grantId'
+description: 'Obtiene tenant (id y nombre), usuario y correo conectado asociados a un grantId'
 ---
 
 ## Metodo y ruta
@@ -18,4 +18,18 @@ description: 'Obtiene tenant y usuario asociados a un grantId'
 curl --request GET \
   --url "https://lumos-am-prd.azure-api.net/api/external/integrations/v1/grants/resolve?grantId=<tu_grant_id>" \
   --header "x-api-key: <tu_api_key>"
+```
+
+## Respuesta esperada
+
+```json
+{
+  "success": true,
+  "data": {
+    "tenantId": "8f2d5f9d-2fb6-4ea9-8f40-64c31b7c2b41",
+    "tenantName": "Lumos Demo",
+    "userId": "f6d80e32-c840-4684-9637-0a69f1bb7f4a",
+    "connectedEmail": "vendedor@lumos.ai"
+  }
+}
 ```

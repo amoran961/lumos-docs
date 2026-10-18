@@ -1,8 +1,6 @@
 ---
-title: 'Listar oportunidades'
-openapi: 'GET /integrations/v1/opportunities'
+title: "Listar oportunidades"
+openapi: "GET /opportunities"
 ---
 
-<Note>
-  Requiere header `x-api-key` y `tenantId` en query. Puedes filtrar por uno o varios `pipelineStageId` (por ejemplo: `pipelineStageId=stage-1,stage-2` o repitiendo el parámetro).
-</Note>
+Requiere el permiso `opportunities:read`.

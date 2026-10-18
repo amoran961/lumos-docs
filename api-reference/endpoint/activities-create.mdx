@@ -1,8 +1,6 @@
 ---
-title: 'Crear actividad'
-openapi: 'POST /integrations/v1/activities'
+title: "Registrar actividad"
+openapi: "POST /activities"
 ---
 
-<Note>
-  Requiere header `x-api-key` y `tenantId` en el body. Para este flujo de integraciones, usa `relatedToType = "opportunity"` y `relatedToId` con el id de la oportunidad.
-</Note>
+Requiere el permiso `activities:write`.

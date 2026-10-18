@@ -1,0 +1,33 @@
+---
+title: "Sincronización y campos personalizados"
+description: "Pagina resultados y evita duplicados al reintentar."
+---
+
+## Paginación
+
+Los listados paginados devuelven `{ data, nextCursor }`, ordenados por `updatedAt` ascendente. `limit` admite entre 1 y 200 registros, con 50 por defecto. Envía `cursor` con el valor recibido hasta que `nextCursor` sea `null`. Pipelines, usuarios y el catálogo de campos devuelven listas sin este cursor.
+
+```bash
+curl --get "$LUMOS_API_BASE_URL/contacts"   --header "x-api-key: $LUMOS_API_KEY"   --data-urlencode 'updatedSince=2026-10-01T00:00:00Z'   --data-urlencode 'limit=50'
+```
+
+Usa `updatedSince` para consultar cambios incrementales. Conserva los filtros al recorrer las páginas y guarda tu punto de sincronización después de procesarlas correctamente.
+
+## Idempotencia
+
+En los `POST`, envía `Idempotency-Key`. Durante 24 horas, repetir la misma key con el mismo cuerpo devuelve la respuesta original y `Idempotent-Replayed: true`. No reutilices la key para otra operación o un cuerpo distinto: recibirás `422 idempotency_key_reused`.
+
+## Campos personalizados
+
+Consulta `GET /custom-fields?entity=account|contact|opportunity`. Cuentas, contactos y oportunidades aceptan y devuelven `customFields`.
+
+```json
+{
+  "customFields": {
+    "segmento": "Pyme",
+    "productos": ["CRM", "IA"]
+  }
+}
+```
+
+Las claves del ejemplo son ilustrativas: usa las de tu catálogo. Los tipos disponibles son `text`, `number`, `currency`, `date`, `list` y `multi_list`. Envía fechas como `YYYY-MM-DD`; para moneda puedes enviar un número o `{ "amount": 1500, "currency": "USD" }`. `null` borra el valor, sujeto a las validaciones del campo. Respeta los campos obligatorios y las opciones del catálogo.
