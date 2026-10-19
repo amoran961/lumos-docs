@@ -29,3 +29,12 @@ Las páginas de la integración legacy que ya no aparecen en `docs.json` y la co
 ## Publicación
 
 Estos cambios locales no publican el sitio. Si Mintlify está conectado al repositorio, la publicación depende de su configuración de rama y despliegue.
+
+## Identidad visual
+
+- `favicon.svg` reutiliza el símbolo de nodos de `lumosai-web/public/favicon.svg`.
+- `logo/light.svg` y `logo/dark.svg` adaptan ese símbolo a la cabecera de documentación.
+- `docs.json` configura Plus Jakarta Sans y el violeta de `lumosai-design-system/src/styles/tokens.css` (258 / 84% / 56%, 68% en oscuro).
+- `style.css` adapta superficies, bordes, radio y movimiento del DS. La portada toma el degradado índigo de `lumosai-web/src/styles/tokens.css`.
+
+Los tokens están copiados con nombres `--lumos-*` para evitar conflictos con Mintlify. Revisa estos archivos cuando cambie la identidad del DS. Los bloques de código mantienen la tipografía monoespaciada del tema.

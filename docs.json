@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Lumos CRM Docs",
+  "name": "Lumos · Developers",
   "colors": {
-    "primary": "#7C3AED",
-    "light": "#A78BFA",
-    "dark": "#5B21B6"
+    "primary": "#6931ED",
+    "light": "#9269F2",
+    "dark": "#6931ED"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -29,10 +29,11 @@
               "api-reference/errors"
             ]
           }
-        ]
+        ],
+        "icon": "book-open"
       },
       {
-        "tab": "API",
+        "tab": "Referencia API",
         "groups": [
           {
             "group": "Cuentas",
@@ -41,7 +42,8 @@
               "api-reference/endpoint/accounts-create",
               "api-reference/endpoint/accounts-get",
               "api-reference/endpoint/accounts-update"
-            ]
+            ],
+            "icon": "building"
           },
           {
             "group": "Contactos",
@@ -50,7 +52,8 @@
               "api-reference/endpoint/contacts-create",
               "api-reference/endpoint/contacts-get",
               "api-reference/endpoint/contacts-update"
-            ]
+            ],
+            "icon": "address-book"
           },
           {
             "group": "Oportunidades",
@@ -59,7 +62,8 @@
               "api-reference/endpoint/opportunities-create",
               "api-reference/endpoint/opportunities-get",
               "api-reference/endpoint/opportunities-update"
-            ]
+            ],
+            "icon": "chart-line"
           },
           {
             "group": "Actividades",
@@ -67,7 +71,8 @@
               "api-reference/endpoint/activities-list",
               "api-reference/endpoint/activities-create",
               "api-reference/endpoint/activities-get"
-            ]
+            ],
+            "icon": "clock"
           },
           {
             "group": "Tareas",
@@ -76,27 +81,32 @@
               "api-reference/endpoint/tasks-create",
               "api-reference/endpoint/tasks-get",
               "api-reference/endpoint/tasks-update"
-            ]
+            ],
+            "icon": "list-check"
           },
           {
             "group": "Campos personalizados",
             "pages": [
               "api-reference/endpoint/custom-fields-list"
-            ]
+            ],
+            "icon": "sliders"
           },
           {
             "group": "Pipelines",
             "pages": [
               "api-reference/endpoint/pipelines-list"
-            ]
+            ],
+            "icon": "diagram-project"
           },
           {
             "group": "Usuarios",
             "pages": [
               "api-reference/endpoint/users-list"
-            ]
+            ],
+            "icon": "users"
           }
-        ]
+        ],
+        "icon": "code"
       }
     ]
   },
@@ -107,7 +117,7 @@
   "navbar": {
     "links": [
       {
-        "label": "Quickstart",
+        "label": "Guías",
         "href": "/quickstart"
       },
       {
@@ -117,8 +127,8 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Ver endpoints",
-      "href": "/api-reference/endpoint/accounts-list"
+      "label": "Abrir Lumos",
+      "href": "https://platform.lumosai.biz"
     }
   },
   "contextual": {
@@ -134,6 +144,16 @@
   "footer": {
     "socials": {
       "github": "https://github.com/amoran961/lumos-docs"
+    }
+  },
+  "description": "Guías y referencia de la API pública de Lumos CRM.",
+  "fonts": {
+    "family": "Plus Jakarta Sans"
+  },
+  "background": {
+    "color": {
+      "light": "#F6F7F9",
+      "dark": "#111318"
     }
   }
 }

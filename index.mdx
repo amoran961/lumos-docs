@@ -1,16 +1,43 @@
 ---
-title: "API pública de Lumos CRM"
-description: "Conecta tu ERP, sitio web o automatizaciones con Lumos CRM."
+title: "Desarrolla con Lumos"
+description: "Conecta tus sistemas con la información comercial de tu equipo."
 ---
 
-Integra tus sistemas con cuentas, contactos, oportunidades, actividades y tareas de tu empresa. Consulta pipelines, usuarios y campos personalizados para construir tus flujos.
+<div className="lumos-hero">
+  <div className="lumos-eyebrow">Lumos developers · API pública v1</div>
+  <h2 className="lumos-title">Tu CRM, conectado a lo que construyes.</h2>
+  <p className="lumos-description">Lleva cuentas, contactos y oportunidades a tus aplicaciones. Conecta tu ERP, captura leads y automatiza el trabajo de tu equipo con la API de Lumos.</p>
+  <div className="lumos-actions">
+    <a className="lumos-button lumos-button-primary" href="/quickstart">Empieza a integrar →</a>
+    <a className="lumos-button" href="/api-reference/endpoint/accounts-list">Explora la API</a>
+  </div>
+  <div className="lumos-facts">
+    <span><strong>REST</strong> + JSON</span>
+    <span><strong>22</strong> operaciones</span>
+    <span><strong>API keys</strong> por integración</span>
+  </div>
+</div>
+
+## Construye tu integración
 
 <CardGroup cols={2}>
-  <Card title="Primeros pasos" icon="rocket" href="/quickstart">Configura una integración y realiza tu primera consulta.</Card>
-  <Card title="Referencia de endpoints" icon="terminal" href="/api-reference/endpoint/accounts-list">Consulta parámetros, cuerpos y respuestas.</Card>
-  <Card title="Autenticación y permisos" icon="key" href="/api-reference/authentication">Crea credenciales con los permisos que necesitas.</Card>
-  <Card title="Sincronización" icon="arrows-rotate" href="/api-reference/synchronization">Usa cursores, cambios incrementales e idempotencia.</Card>
+  <Card title="Primeros pasos" icon="rocket" href="/quickstart">Genera una credencial y realiza tu primera consulta.</Card>
+  <Card title="Referencia API" icon="code" href="/api-reference/endpoint/accounts-list">Explora parámetros, esquemas y respuestas por recurso.</Card>
+  <Card title="Autenticación y permisos" icon="key" href="/api-reference/authentication">Define qué puede leer y escribir cada integración.</Card>
+  <Card title="Sincronización de datos" icon="arrows-rotate" href="/api-reference/synchronization">Recorre resultados y evita duplicados al reintentar.</Card>
 </CardGroup>
+
+## Conecta tus flujos comerciales
+
+<CardGroup cols={3}>
+  <Card title="Conecta tu ERP" icon="building" href="/api-reference/endpoint/accounts-list">Consulta y actualiza las cuentas de tu empresa.</Card>
+  <Card title="Captura contactos" icon="address-book" href="/api-reference/endpoint/contacts-create">Registra contactos desde tus sistemas externos.</Card>
+  <Card title="Gestiona oportunidades" icon="chart-line" href="/api-reference/endpoint/opportunities-create">Integra tu pipeline con tus aplicaciones.</Card>
+</CardGroup>
+
+## Una base para integrar con confianza
+
+Usa [campos personalizados](/api-reference/endpoint/custom-fields-list) para adaptar los datos a tu negocio. Consulta los [errores y límites](/api-reference/errors) para controlar tus solicitudes y descarga el [contrato OpenAPI](/api-reference/openapi.json) para generar clientes.
 
 <Note>
 Esta documentación corresponde a la API pública v1. Confirma con tu administrador que está habilitada y cuál es la URL base de tu entorno antes de integrar.
